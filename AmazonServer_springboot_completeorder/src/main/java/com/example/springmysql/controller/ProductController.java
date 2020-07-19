@@ -20,6 +20,15 @@ public class ProductController<dao> {
 	@Autowired
 	private ProductDao dao;
 	
+	@GetMapping("/getProducts")
+	public List<products> getProducts(){
+		return (List<products>) dao.findAll();
+	}
+	
+	@GetMapping("/getOrders/highestprice")
+	public List<products> getProductsbyHighprice(){
+		return dao.findbyhighestpurchase();
+	}
 	
 	@PostMapping("/completetheorder")
 	public String bookTicket(@RequestBody List<products> products){
